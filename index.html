@@ -1,36 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>In Progress</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f3f4f6;
-            font-family: Arial, sans-serif;
-        }
-        .message {
-            text-align: center;
-            padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .message h1 {
-            color: #333;
-        }
-    </style>
+    <title>Drop Dead Bytes</title>
+    <link rel="stylesheet" href="styling/main.css">
+    <link rel="stylesheet" href="styling/mobile.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Signika:wght,GRAD@700,-30&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-    <div class="message">
-        <h1>In progress!</h1>
-        <p>Our website is currently under construction. Please check back soon!</p>
+    <div class="container">
+        <header class="header">
+            <div class="glass-shards"></div>
+            <h1>Drop Dead Bytes</h1>
+            <p>Two programmers working together</p>
+        </header>
+
+        <main>
+            <section class="about">
+                <h2>About Us</h2>
+                <p>
+                    At <strong>DropDeadBytes</strong>, we focus on crafting programs and applications tailored to meet
+                    the needs of <em>you</em>, the user.
+                    We believe in creating practical solutions that are easy to use, effective, and, most importantly,
+                    helpful. By combining creativity, technical know-how, and a passion for problem-solving, we’re
+                    constantly exploring new ideas and technologies to push boundaries.
+                </p>
+
+                <h2>Meet the Team</h2>
+                <ul id="team-list" class="team-list"></ul>
+            </section>
+
+            <section class="projects" id="projects-container">
+                <h2>Our Projects</h2>
+                <div id="project-grid" class="project-grid"></div>
+            </section>
+
+            <section class="contact">
+                <h2>Get in Touch</h2>
+                <p>Want to collaborate or have questions? Hit us up!</p>
+                <div class="contact-links">
+                    <a href="https://github.com/DropDeadBytes" target="_blank">GitHub</a>
+                    <a href="mailto:bud3699@gmail.com">Email Us</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Drop Dead Bytes. All rights reserved.</p>
+        </footer>
     </div>
+
+    <script>
+        const teamDataUrl = 'dyn/team.json';
+        const projectsDataUrl = 'dyn/projects.json';
+
+        fetch(teamDataUrl)
+            .then(response => response.json())
+            .then(data => {
+                const teamList = document.getElementById('team-list');
+                data.forEach(member => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('team-member');
+
+                    listItem.innerHTML = `
+                        <img src="${member.photo}" alt="${member.name}'s Photo" class="team-image">
+                        <div>
+                            <a href="${member.github}">${member.name}</a> - ${member.description}
+                            <blockquote>"${member.quote}"</blockquote>
+                        </div>
+                    `;
+
+                    teamList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching team data:', error));
+
+        fetch(projectsDataUrl)
+            .then(response => response.json())
+            .then(data => {
+                const projectGrid = document.getElementById('project-grid');
+                data.forEach(project => {
+                    if (project.visible) {
+                        const projectDiv = document.createElement('div');
+                        projectDiv.classList.add('project');
+
+                        projectDiv.innerHTML = `
+                        <h3>${project.title}</h3>
+                        <div class="content">
+                            <img src="${project.image}" alt="${project.title}" class="project-image">
+                            <p>${project.description}</p>
+                        </div>
+                        <div class="content project-buttons">
+                            <a href="${project.github}" class="project-button">GitHub</a>
+                            <a href="${project.info}" class="project-button">Info</a>
+                        </div>
+                    `;
+                        projectGrid.appendChild(projectDiv);
+                    }
+
+
+                });
+                if (document.getElementById("project-grid").children.length === 0) {document.getElementById("projects-container").style.display = "none";}
+            })
+            .catch(error => console.error('Error fetching project data:', error));
+
+    </script>
 </body>
+
 </html>

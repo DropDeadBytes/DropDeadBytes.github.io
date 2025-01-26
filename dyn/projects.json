@@ -1,0 +1,10 @@
+[
+    {
+        "title": "Virtual Display Integrated",
+        "image": "https://avatars.githubusercontent.com/u/196086815?s=200&v=4",
+        "description": "A driver to focus on being able to integrate it into other applications more easier. This means you can create display on command through launching an application with specific arguments ",
+        "github": "https://github.com/DropDeadBytes/VDIntegrated",
+        "info": "VDIntegrated",
+        "visible": false
+    }
+]

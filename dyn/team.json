@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Bud",
+        "photo": "https://cdn.discordapp.com/avatars/399991360800948224/950ad184243f7ef6eb6393d9b89c6d86?size=1024",
+        "github": "https://github.com/bud3699/",
+        "description": "A tech enthusiast and skilled developer, Bud brings understanding and general skills expertise to the team.",
+        "quote": "I'm just a chill programmer who enjoys programming and seeing what's possible with just that little bit of effort."
+    },
+    {
+        "name": "Nadroj",
+        "photo": "https://cdn.discordapp.com/avatars/810444262096764929/c8f2d54318256753a7d876f008e3095e?size=1024",
+        "github": "https://github.com/Nadroj-Mail/",
+        "description": "Under the influence of death metal, Nadroj slams his keys to make something he doesn't know he's doing.",
+        "quote": "I strive to create programs to bridge the gap between f*** about and find out and functionality (Not that I know anything about functionalities)."
+    }
+]
